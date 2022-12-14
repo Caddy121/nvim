@@ -18,10 +18,15 @@ null_ls.setup({
 		--  to disable file types use
 		--  "formatting.prettier.with({disabled_filetypes: {}})" (see null-ls docs)
 		formatting.prettier.with({
-			"--print-width=100",
-			"--single-quote=true",
-			"--jsx-single-quote=true",
-			"--bracket-same-line=true",
+			extra_args = {
+				"--print-width=100",
+				"--single-quote=true",
+				"--jsx-single-quote=true",
+				"--bracket-same-line=true",
+			},
+			{
+				filetypes = { "html", "json", "css", "sass", "javascript", "javascriptreact", "scss", "typscript" },
+			},
 		}), -- js/ts formatter
 		formatting.stylua, -- lua formatter
 		diagnostics.eslint_d.with({ -- js/ts linter

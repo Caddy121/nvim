@@ -26,6 +26,16 @@ if not status then
 	return
 end
 
+-- Popup window
+packer.init({
+	display = {
+		open_fn = function()
+			return require("packer.util").float({ border = "rounded" })
+		end,
+		prompt_border = "rounded", -- Border style of prompt popups.
+	},
+})
+
 -- add list of plugins to install
 return packer.startup(function(use)
 	-- packer can manage itself
@@ -134,6 +144,7 @@ return packer.startup(function(use)
 
 	-- git integration
 	use("lewis6991/gitsigns.nvim") -- show line modifications on left hand side
+	use("kdheepak/lazygit.nvim")
 
 	if packer_bootstrap then
 		require("packer").sync()

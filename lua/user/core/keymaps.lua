@@ -10,8 +10,15 @@ keymap.set("n", "<A-u>", "<C-w>k")
 keymap.set("n", "<A-i>", "<C-w>l")
 keymap.set("n", "<A-tab>", "<C-6>")
 
--- Close buffer
-keymap.set("n", "<leader>c", ":Bdelete!<CR>")
+-- Window management
+keymap.set("n", "<leader>sv", "<C-w>v") -- split window vertically
+keymap.set("n", "<leader>sh", "<C-w>s") -- split window horizontally
+keymap.set("n", "<leader>se", "<C-w>=") -- make split windows equal width & height
+keymap.set("n", "<leader>sx", ":close<CR>") -- close current split window
+
+-- Buffer
+keymap.set("n", "<leader>c", "<cmd>Bdelete!<CR>")
+keymap.set("n", "<leader>b", "<cmd>Telescope buffers<CR>")
 
 -- Quit/Save
 keymap.set("n", "<C-q>", ":q! <cr>")
@@ -70,7 +77,6 @@ keymap.set("v", ">", ">gv")
 -- lvim.key.normal_mode["F5"] = ":UndotreeToggle <cr>"
 
 -- keymap("n", "<F7>", "<cmd>TSHighlightCapturesUnderCursor<cr>", opts)
-keymap.set("n", "-", ":lua require'lir.float'.toggle()<cr>")
 -- keymap("n", "gx", [[:silent execute '!$BROWSER ' . shellescape(expand('<cfile>'), 1)<CR>]], opts)
 -- keymap("n", "<m-v>", "<cmd>lua require('lsp_lines').toggle()<cr>", opts)
 
@@ -98,12 +104,6 @@ keymap.set("n", "x", '"_x')
 keymap.set("n", "<leader>+", "<C-a>") -- increment
 keymap.set("n", "<leader>-", "<C-x>") -- decrement
 
--- window management
-keymap.set("n", "<leader>v", "<C-w>v") -- split window vertically
-keymap.set("n", "<leader>h", "<C-w>s") -- split window horizontally
-keymap.set("n", "<leader>se", "<C-w>=") -- make split windows equal width & height
-keymap.set("n", "<leader>sx", ":close<CR>") -- close current split window
-
 -- keymap.set("n", "<leader>to", ":tabnew<CR>") -- open new tab
 -- keymap.set("n", "<leader>tx", ":tabclose<CR>") -- close current tab
 -- keymap.set("n", "<leader>tn", ":tabn<CR>") --  go to next tab
@@ -112,6 +112,9 @@ keymap.set("n", "<leader>sx", ":close<CR>") -- close current split window
 ----------------------
 -- Plugin Keybinds
 ----------------------
+
+-- lir
+keymap.set("n", "-", ":lua require'lir.float'.toggle()<cr>")
 
 -- nvim-tree
 keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>") -- toggle file explorer
@@ -132,6 +135,12 @@ keymap.set("n", "<leader>gs", "<cmd>Telescope git_status<cr>") -- list current c
 -- restart lsp server (not on youtube nvim video)
 keymap.set("n", "<leader>rs", ":LspRestart<CR>") -- mapping to restart lsp if necessary
 keymap.set("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format({ async = true })<cr>")
+
+-- lazygit
+keymap.set("n", "<leader>gg", ":LazyGit<CR>")
+
+-- packer
+keymap.set("n", "<leader>ps", ":PackerSync<CR>")
 
 vim.cmd([[
   function! QuickFixToggle()
